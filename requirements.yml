@@ -34,10 +34,6 @@ collections:
 
 # 🔹 External roles: third-party or shared roles from Galaxy or Git
 roles:
-  # Example: a popular role from Ansible Galaxy
-  - name: geerlingguy.nginx
-    version: ">=1.0.0"
-
   # Example: a Git-based private role
   - name: company.devops_baseline
     src: git+https://github.com/company/ansible-role-devops-baseline.git
