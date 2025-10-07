@@ -36,7 +36,7 @@ collections:
 roles:
   # Example: a popular role from Ansible Galaxy
   - name: geerlingguy.nginx
-    version: ">=3.1.0"
+    version: ">=1.0.0"
 
   # Example: a Git-based private role
   - name: company.devops_baseline
