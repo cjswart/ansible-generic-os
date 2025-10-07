@@ -31,10 +31,3 @@ collections:
     version: ">=3.12.0"
   - name: kubernetes.core
     version: ">=3.2.0"
-
-# 🔹 External roles: third-party or shared roles from Galaxy or Git
-roles:
-  # Example: a Git-based private role
-  - name: company.devops_baseline
-    src: git+https://github.com/company/ansible-role-devops-baseline.git
-    version: main
