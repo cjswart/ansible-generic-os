@@ -1,0 +1,9 @@
+---
+
+network_time_bindaddress: "{{ ansible_default_ipv4.address }}"
+
+allowed_client_ip_ranges:
+  - "{{ master_network }}"
+  - "{{ worker_network }}"
+
+...

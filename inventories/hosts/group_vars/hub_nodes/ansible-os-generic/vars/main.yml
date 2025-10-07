@@ -1,0 +1,42 @@
+---
+
+generic_additional_packages:
+  - git
+  - ansible-core
+  - rsync
+
+generic_logical_volumes:
+  - name: lvroot
+    size: 15G
+    vg: vg00
+  - name: lvopt
+    size: 9G
+    vg: vg00
+
+ipv4_gateway: 172.16.20.129
+
+generic_use_proxy: true
+generic_proxy_rules: "127.0.0.0/8,10.0.0.0/8,172.0.0.0/8,192.168.0.0/16,145.222.0.0/16,34.243.68.35/32,.luna.kpn.org,int.cncp.nl,.it.mgt,.kpn.org,.kafka.kpnbm-shared-02.dsh-prod.dsh.prod.aws.kpn.com"
+generic_proxy_port: 3129
+
+generic_squid_key: "{{ inventory_dir }}/group_vars/hub_nodes/ansible-os-generic/files/squid.pem"
+
+generic_static_routes:
+  - "{{ ntp_servers_external[0] }}/32 {{ generic_mgmt_gateway }}"
+  - "{{ ntp_servers_external[1] }}/32 {{ generic_mgmt_gateway }}"
+  - "{{ steppingstone_ips[0] }}/32 {{ generic_mgmt_gateway }}"
+  - "{{ steppingstone_ips[1] }}/32 {{ generic_mgmt_gateway }}"
+  - "{{ steppingstone_ips[2] }}/32 {{ generic_mgmt_gateway }}"
+  - "{{ steppingstone_ips[3] }}/32 {{ generic_mgmt_gateway }}"
+  - "{{ dns_servers_external[0] }}/32 {{ generic_mgmt_gateway }}"
+  - "{{ dns_servers_external[1] }}/32 {{ generic_mgmt_gateway }}"
+  - "{{ dns_servers_external[2] }}/32 {{ generic_mgmt_gateway }}"
+  - "{{ dns_servers_external[3] }}/32 {{ generic_mgmt_gateway }}"
+  - "{{ satellite_ip }}/32 {{ generic_mgmt_gateway }}"
+  - "{{ vcenters_servers[0] }}/32 {{ generic_mgmt_gateway }}"
+  - "{{ vcenters_servers[1] }} {{ generic_mgmt_gateway }}"
+  - "{{ repo_servers_tooling }}/32 {{ generic_mgmt_gateway }}"
+  - "{{ qualys_trendmicro_tooling[0] }}/32 {{ generic_mgmt_gateway }}"
+  - "{{ qualys_trendmicro_tooling[1] }}/32 {{ generic_mgmt_gateway }}"
+
+...

@@ -1,0 +1,14 @@
+---
+
+generic_fe_dns_servers: 127.0.0.53
+generic_additional_packages: [ locate ]
+
+generic_logical_volumes:
+  - name: lvopt
+    size: 4G
+    vg: vg00
+  - name: lvvar
+    size: 19G
+    vg: vg00
+
+...

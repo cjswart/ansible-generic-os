@@ -1,0 +1,13 @@
+---
+
+ansible_host: 10.200.6.11
+mgmt_ip: 10.237.32.191/22
+generic_fe_gateway: 10.200.6.1
+
+node_type: hub-node
+dhcp_node_type: secondary
+dhcp_primary_server: 10.200.6.11
+dhcp_secondary_server: 10.200.6.10
+
+...
+

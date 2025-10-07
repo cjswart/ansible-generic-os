@@ -1,0 +1,187 @@
+---
+
+all:
+  vars:
+  children:
+     hub_nodes:
+     agent_nodes:
+     proxy_nodes:
+     exec_nodes:
+     halon_nodes:
+     cees_nodes:
+
+cees_nodes:
+  children:
+    cees_nodes_test:
+      children:
+        cees_test_nodes:
+          hosts:
+            ansible-slave-1:
+    cees_nodes_prd:
+      children:
+        cees_prd_nodes:
+
+hub_nodes:
+  children: 
+    hub_nodes_ota:
+      children:
+        kpn_ota_hub_nodes:
+    hub_nodes_prd:
+      children:
+        kpn_prd_hub_nodes:
+        kadaster_prd_hub_nodes:
+
+agent_nodes:
+  children: 
+    agent_nodes_ota:
+      children:
+        kpn_ota_agent_nodes:
+    agent_nodes_prd:
+      children:
+        kpn_prd_agent_nodes:
+        kadaster_prd_agent_nodes:
+
+proxy_nodes:
+  hosts:
+    proxy01:
+      ansible_host: 57.153.56.12
+      ansible_user: ocp
+      ansible_port: 1022
+      ansible_ssh_private_key_file: /etc/pki/tls/private/squid.pem
+    proxy02:
+      ansible_host: 57.153.56.12
+      ansible_user: ocp
+      ansible_port: 1023
+      ansible_ssh_private_key_file: /etc/pki/tls/private/squid.pem
+
+exec_nodes:
+  children: 
+    exec_nodes_ota:
+      children:
+        kpn_ota_exec_nodes:
+
+halon_nodes:
+  children: 
+    halon_nodes_prd:
+      children:
+        kadaster_prd_ams_halon_nodes:
+        kadaster_prd_apl_halon_nodes:
+
+ota:
+  children:
+    kpn_ota:
+
+prd:
+  children:
+    kpn_prd:
+    kadaster_prd:
+
+kpn:
+  children: 
+    kpn_ota: 
+      children:
+        kpn_ota_ams:
+          children:
+            kpn_ota_ams_hub_nodes:
+              hosts:
+                SU260V0001:
+                SU260V0002:
+            kpn_ota_ams_agent_nodes:
+              hosts:
+                SU260V0003:
+    kpn_prd:
+      children: 
+        kpn_prd_ams:
+          children:
+            kpn_prd_ams_hub_nodes:
+              hosts:
+                SU260V0004:
+                SU260V0005:
+            kpn_prd_ams_agent_nodes:
+              hosts:
+                SU260V0006:
+        kpn_prd_aal:
+          children:
+            kpn_prd_aal_hub_nodes:
+              hosts:
+                SU260V0007:
+                SU260V0008:
+            kpn_prd_aal_agent_nodes:
+              hosts:
+                SU260V0009:
+  #  ocp01.kpn.int.cncp.nl: 
+  #    children:
+  #      kpn_ota_ams_hub_nodes:
+  #  ocp02.kpn.int.cncp.nl: 
+  #    children:
+  #      kpn_prd_ams_hub_nodes:
+  #  ocp03.kpn.int.cncp.nl: 
+  #    children:
+  #      kpn_prd_aal_hub_nodes:
+    kpn_hub_nodes: 
+      children:
+        kpn_ota_hub_nodes:
+          children:
+            kpn_ota_ams_hub_nodes:
+        kpn_prd_hub_nodes:
+          children:
+            kpn_prd_ams_hub_nodes:
+            kpn_prd_aal_hub_nodes:
+    kpn_agent_nodes: 
+      children:
+        kpn_ota_agent_nodes:
+          children:
+            kpn_ota_ams_agent_nodes:
+        kpn_prd_agent_nodes:
+          children:
+            kpn_prd_ams_agent_nodes:
+            kpn_prd_aal_agent_nodes:
+
+kadaster:
+  children: 
+     kadaster_prd:
+      children: 
+        kadaster_prd_apl:
+          children:
+            kadaster_prd_apl_hub_nodes:
+              hosts:
+                SU659V1000:
+                SU659V1001:
+            kadaster_prd_apl_agent_nodes:
+              hosts:
+                SU659V1002:
+            kadaster_prd_apl_halon_nodes:
+              hosts:
+                SU659V1002:
+        kadaster_prd_ams:
+          children:
+            kadaster_prd_ams_hub_nodes:
+              hosts:
+                SU659V2000:
+                SU659V2001:
+            kadaster_prd_ams_agent_nodes:
+              hosts:
+                SU659V2002:
+            kadaster_prd_ams_halon_nodes:
+              hosts:
+                SU659V2002:
+ #    ocp01.kadaster.int.cncp.nl: 
+ #       children:
+ #         kadaster_prd_apl_hub_nodes:
+ #    ocp02.kadaster.int.cncp.nl: 
+ #       children:
+ #         kadaster_prd_ams_hub_nodes:
+     kadaster_hub_nodes: 
+        children:
+          kadaster_prd_hub_nodes:
+            children:
+              kadaster_prd_ams_hub_nodes:
+              kadaster_prd_apl_hub_nodes:
+     kadaster_agent_nodes: 
+        children:
+          kadaster_prd_agent_nodes:
+            children:
+              kadaster_prd_ams_agent_nodes:
+              kadaster_prd_apl_agent_nodes:
+
+...

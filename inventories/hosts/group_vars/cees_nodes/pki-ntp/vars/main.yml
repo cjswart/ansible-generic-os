@@ -1,0 +1,4 @@
+---
+network_time_remoteservers: "{{ ntp_servers }}"
+
+...

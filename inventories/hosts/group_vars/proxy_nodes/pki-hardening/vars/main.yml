@@ -1,0 +1,12 @@
+---
+
+hardening_mount_options: "{{ hardening_custom_mount_options }}"
+
+hardening_custom_mount_options:
+  - path: /
+    src: "/dev/root"
+    fstype: ext4
+    opts: defaults
+    state: mounted
+
+...

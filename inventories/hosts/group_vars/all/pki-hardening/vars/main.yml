@@ -1,0 +1,17 @@
+---
+
+hardening_sshd_default_interface_address: "{{ ansible_ens192.ipv4.address }}"
+hardening_sshd_additional_interface_address: "{{ ansible_ens224.ipv4.address }}"
+
+hardening_sshd_passwordauthentication: "yes"
+hardening_mapper_root: "/dev/mapper/vg00-lvroot"
+hardening_mapper_home: "/dev/mapper/vg00-lvhome"
+hardening_mapper_srv: "/dev/mapper/rhel-lvsrv"
+hardening_mapper_tmp: "/dev/mapper/vg00-lvtmp"
+hardening_mapper_var: "/dev/mapper/vg00-lvvar"
+hardening_mapper_var_log: "/dev/mapper/vg00-lvlog"
+hardening_mapper_var_log_audit: "/dev/mapper/vg00-lvaudit"
+hardening_mapper_swap: "/dev/mapper/vg00-lvswap"
+hardening_selinux_state: "enforcing"
+
+...

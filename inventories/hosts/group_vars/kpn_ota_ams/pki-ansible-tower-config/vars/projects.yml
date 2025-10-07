@@ -1,0 +1,13 @@
+---
+tower_projects:
+  - name: "Demo Project"
+    state: absent
+  - name: "cncp"
+    organization: "CloudNative"
+    scm_type: git
+    scm_url: "https://github.com/KPN-B2B-CNCP/ansible-os.git"
+    scm_branch: rextest
+    scm_clean: true
+    scm_update_on_launch: true
+    scm_credential: "GitHub_cncp"
+...

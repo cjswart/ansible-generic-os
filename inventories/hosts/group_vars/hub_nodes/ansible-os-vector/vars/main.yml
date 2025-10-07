@@ -1,0 +1,7 @@
+---
+
+vector_use_proxy: true
+vector_proxy_server: "https://{{ generic_proxy_server }}"
+vector_proxy_port: "{{ generic_proxy_port }}"
+
+...

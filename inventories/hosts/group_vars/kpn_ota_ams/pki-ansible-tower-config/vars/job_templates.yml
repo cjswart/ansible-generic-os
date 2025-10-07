@@ -1,0 +1,22 @@
+---
+tower_job_templates:
+  - name: "Demo Job Template"
+    state: absent
+    playbook: "absent"
+    project: "absent"
+    inventory: "absent"
+  - name: "Test Job Template - No Remote Execution Node"
+    inventory: "cncp SCM Inventory"
+    project: "cncp"
+    playbook: "job_template_1.yml"
+    credential: "ansible_ssh"
+    limit: "SU260V0003"
+  - name: "Test Job Template - Remote Execution Node"
+    inventory: "cncp SCM Inventory"
+    project: "cncp"
+    playbook: "job_template_1.yml"
+    credential: "ansible_ssh"
+    limit: "SU260V0003"
+    instance_groups:
+      - rextest
+...

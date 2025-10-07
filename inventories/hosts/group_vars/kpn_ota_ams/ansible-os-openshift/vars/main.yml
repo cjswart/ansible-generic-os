@@ -1,0 +1,26 @@
+---
+
+openshift_api_vips: "172.16.2.10"
+
+openshift_ingress_vips: "172.16.2.11"
+
+openshift_vcenters_datacenters: "DC4-NLAMS1"
+
+openshift_vcenter_username: srvc_cncp_vcenter@cura.kpn.org
+
+openshift_compute_cluster: "/DC4-NLAMS1/host/DRP-V4-MIX-Z-01"
+
+openshift_vcenters_datastore: "/DC4-NLAMS1/datastore/OCP-MIX01-V4-Z-NDR-W-DSC-001/OCP-MIX01-V4-Z-NDR-W-LUN-001"
+
+openshift_vcenters_networks: "260-F-L01-NLASD2"
+
+openshift_vcenters_resourcepool: "/DC4-NLAMS1/host/DRP-V4-MIX-Z-01/Resources"
+
+openshift_vcenter_folder: "Splunk/260-OpenShift/OpenShift/OTA/"
+
+openshift_ssh_key:
+  ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQCcZ+uTWHW4PF7PBBUQgg7+pBLnfO4oZZikuVVLEbH3pIFhbGyACyl3FumcVbFqd0VGDKpYS9mDBuZpfBxAcMyr8Wjq6TwxqfOwOSELEkwpdkHCFgU4UpY1A/DRlRYbfO4zGcstOL79yp1eKAQQbrDvDkbIDHagK8Z4ka5FRP3K+F/bqlJ9LGEZ65qf2Q7/TbeMXrm0136GtEG2WPu1NhGa1XyfKnt55ZK7iV0m7g3z8kZEFdjIjVENUwkmuISd1jIhc3CtXsvSXxTndsNnfjiml/Rx0uViJmazZgSSYCa9o1EkVyejdhjLzSkvnRwAPzMgWA93c0fV5osIsh8VjPtkyBzUT49jw5tDcUAcheFXMhyRi3QAI9ZIAPj9JbmJlh0Wuv92N/Tu0gNyt8IDQjrRZaPCDQ26sQ7NVv1BJ0EoY4Jpip7oNGTTYboe/WlCJynSqlIpHkeSW/mj1Y40wxeZAtQK0l+Vz+VrJOceN+q71QC/sK7JzaXaTbSFYOOy4S65X/PBmbNcg/8P4YekobxKQlskKsbIcmH6Cz2xKN7/+5IFQqQATqs0xea5RK4bdx4Iry45EAdAVTJ93zXqZ+0s2bVrK+6IzoBBFWphlBQ5pmM6YFgryGMY5y7CZv1Q+OuTYR8bBmz9fvqDVjR45+N7bsATKYxg9u83i/qCDxmXlQ==
+openshift_ssh_key2: 
+  ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDJfYw7hmG+6d5YrqKL9Mr1hHkpzAPd+u9QMY35VQStD9UbgMiTiTbcAybkvUJlXdCYSbd5/ri532pMSzhXu7o/f8xuREP938lMflp6ZI+zaReCi1BvMcANahOW/4NBRa5rDg5T0m32tvOLcLx/WLzUacE8SiZdXh/BzsifDpBP2S6119MdVxVZnTMitYm5XZW5ls9pp9UReOD8/XhXWKaiUHz7cqdbdEEUoFWCQYJX07mQj0kfN2Y+NzaAaWBxKiRQxKXAFBgiG9MbNMibtB1doyTBoHkcLGBSORObs4/wTwikwWJq8eeLpm5pXYTYocXegarTL9gNmrk78bVjEnUYeleP0RTF6gNzI/1m6ihWIi8HB39tq+2Wi140tHMBFBzh0GZeh9ghOP+BfvZBMHClkoAAfODzkUwV5uidng9HZHprFd0KZCfWm3AfqVTr1CwXcatno0NBnhCInX3c+2pSAtPkrdkmcQHbVVAdl3erLMQJ/bg3Pe63V0cBAoFTlHlDgRoTYMW6ejyfeVfukMmtzRUYv+0hNiSOIt6l7nvrzHUZ6FOMRzax7YCRvRtPZXmFarHaVayrnHWkdLLiq8glxSpgJYbEXPMy6CJ9Y5j7e8r8cBCkn5Dn0dgnKDkdLLLIlTPB/y3bUOsAHCwiF+cjx2K1rVIz3pQPBpA976FPrQ==
+
+...

@@ -1,0 +1,8 @@
+---
+
+trendmicro_manager_url: "https://dsm-sp-pub.epp4s.kpn.org:4119"
+trendmicro_dsm_proxy: "dsm-hb-pub.epp4s.kpn.org:8080/"
+trendmicro_hb_proxy: "dsm-hb-pub.epp4s.kpn.org:8080/"
+
+...
+

@@ -1,0 +1,140 @@
+---
+
+hardening_services: "{{ hardening_cncp_default_services }}"
+
+hardening_mount_options: "{{ hardening_custom_mount_options }}"
+
+hardening_template_01_cis_sysctl_dot_d_network: "{{ inventory_dir }}/group_vars/agent_nodes/pki-hardening/templates/01-CIS-sysctl_dot_d-network.conf.j2"
+
+hardening_exclude_dirs: 
+  - /var/lib/containers
+  - /var/lib/rancher
+  - /var/lib/kubelet
+  - /run/k3s/containerd
+
+hardening_custom_mount_options:
+  - path: /
+    src: "{{ hardening_mapper_root }}"
+    fstype: xfs
+    opts: defaults
+    state: mounted
+  - path: /home
+    src: "{{ hardening_mapper_home }}"
+    fstype: xfs
+    opts: nodev,nosuid,usrquota,grpquota
+    state: mounted
+  - path: /tmp
+    src:  "{{ hardening_mapper_tmp }}"
+    fstype: xfs
+    opts: nodev,noexec,nosuid
+    state: mounted
+  - path: /var
+    src:  "{{ hardening_mapper_var }}"
+    fstype: xfs
+    opts: nodev # Removed nosuid so K3s will run 
+    state: mounted
+  - path: /var/log
+    src:  "{{ hardening_mapper_var_log }}"
+    fstype: xfs
+    opts: nodev,noexec,nosuid
+    state: mounted
+  - path: /var/log/audit
+    src: "{{ hardening_mapper_var_log_audit }}"
+    fstype: xfs
+    opts: nodev,noexec,nosuid
+    state: mounted
+  - path: none
+    src: "{{ hardening_mapper_swap }}"
+    fstype: swap
+    opts: defaults
+    state: present
+  - path: /dev/shm
+    src: tmpfs
+    fstype: tmpfs
+    opts: nodev,noexec,nosuid
+    state: mounted
+
+
+hardening_cncp_default_services:
+  - name: "nmb"
+    package: "samba"
+    state: "stopped"
+    enabled: "no"
+    masked: "yes"
+  - name: "xinetd"
+    package: "xinetd"
+    state: "stopped"
+    enabled: "no"
+    masked: "yes"
+  - name: "dhcp"
+    package: "dhcp"
+    state: "stopped"
+    enabled: "no"
+    masked: "no"
+  - name: "bind"
+    package: "named"
+    state: "stopped"
+    enabled: "no"
+    masked: "no"
+  - name: "nfs"
+    package: "nfs-utils"
+    state: "stopped"
+    enabled: "no"
+    masked: "yes"
+  - name: "nfs-server"
+    package: "nfs-utils"
+    state: "stopped"
+    enabled: "no"
+    masked: "yes"
+  - name: "rpcbind"
+    package: "rpcbind"
+    state: "stopped"
+    enabled: "no"
+    masked: "yes"
+  - name: "autofs"
+    package: "autofs"
+    state: "stopped"
+    enabled: "no"
+    masked: "yes"
+  - name: "vsftpd"
+    package: "vsftpd"
+    state: "stopped"
+    enabled: "no"
+    masked: "yes"
+  - name: "avahi-daemon"
+    package: "avahi"
+    state: "stopped"
+    enabled: "no"
+    masked: "yes"
+  - name: "cups"
+    package: "cups"
+    state: "stopped"
+    enabled: "no"
+    masked: "yes"
+  - name: "ypserv"
+    package: "ypserv"
+    state: "stopped"
+    enabled: "no"
+    masked: "yes"
+  - name: "rlogin.socket"
+    package: "rsh-server"
+    state: "stopped"
+    enabled: "no"
+    masked: "yes"
+  - name: "rexec.socket"
+    package: "rsh-server"
+    state: "stopped"
+    enabled: "no"
+    masked: "yes"
+  - name: "psacct"
+    package: "psacct"
+    state: "started"
+    enabled: "yes"
+    masked: "no"
+  - name: "arpwatch"
+    package: "arpwatch"
+    state: "started"
+    enabled: "yes"
+    masked: "no"
+
+...

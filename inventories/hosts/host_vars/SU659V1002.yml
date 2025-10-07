@@ -1,0 +1,7 @@
+---
+
+ansible_host: 10.202.4.31
+mgmt_ip: 10.237.48.199/20
+generic_fe_gateway: 10.202.4.1
+
+...

@@ -1,0 +1,70 @@
+---
+
+# A list of zones and properties per zone.
+dns_zones:
+  int.cncp.nl:
+    primary_ns: ns1.int.cncp.nl
+    domain: int.cncp.nl
+    admin_email: admin@kpn.int.cncp.nl
+    serial: 2022051501
+    secondary_ns: ns2.int.cncp.nl
+    hosts:
+      ns1: "{{ hub_nodes[0] }}"
+      ns2: "{{ hub_nodes[1] }}"
+      proxy: "{{ generic_proxy_server_ip }}"
+
+  kpn.int.cncp.nl:
+    primary_ns: ns1.kpn.int.cncp.nl
+    domain: kpn.int.cncp.nl
+    admin_email: admin@kpn.int.cncp.nl
+    serial: 2022051501
+    secondary_ns: ns2.kpn.int.cncp.nl
+    hosts:
+      ns1: "{{ hub_nodes[0] }}"
+      ns2: "{{ hub_nodes[1] }}"
+      agent01:
+        - "{{ agent_nodes[0] }}"
+      haproxy:
+        - "{{ hub_nodes[0] }}"
+        - "{{ hub_nodes[1] }}"
+      hub01:
+        - "{{ hub_nodes[0] }}"
+      hub02:
+        - "{{ hub_nodes[1] }}"
+      registry:
+        - "{{ agent_nodes[0] }}"
+      vcenter:
+        - "{{ hub_nodes[0] }}"
+        - "{{ hub_nodes[1] }}"
+
+  ocp02.kpn.int.cncp.nl:
+    primary_ns: ns1.kpn.int.cncp.nl
+    admin_email: admin@kpn.int.cncp.nl
+    serial: 2022051501
+    secondary_ns: ns2.kpn.int.cncp.nl
+    hosts:
+      api: "{{ openshift_api_vips }}"
+      '*.apps': "{{ openshift_ingress_vips }}"
+      ns1: "{{ hub_nodes[0] }}"
+      ns2: "{{ hub_nodes[1] }}"
+  ocp99.kpn.int.cncp.nl:
+    primary_ns: ns1.kpn.int.cncp.nl
+    admin_email: admin@kpn.int.cncp.nl
+    serial: 2022051501
+    secondary_ns: ns2.kpn.int.cncp.nl
+    hosts:
+      api: 172.16.18.22
+      '*.apps': 172.16.18.23
+      ns1: "{{ hub_nodes[0] }}"
+      ns2: "{{ hub_nodes[1] }}"
+  ocp98.kpn.int.cncp.nl:
+    primary_ns: ns1.kpn.int.cncp.nl
+    admin_email: admin@kpn.int.cncp.nl
+    serial: 2022051501
+    secondary_ns: ns2.kpn.int.cncp.nl
+    hosts:
+      api: 172.16.18.24
+      '*.apps': 172.16.18.25
+      ns1: "{{ hub_nodes[0] }}"
+      ns2: "{{ hub_nodes[1] }}"
+...

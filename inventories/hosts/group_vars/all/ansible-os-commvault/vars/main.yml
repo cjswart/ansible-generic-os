@@ -1,0 +1,6 @@
+---
+
+commvault_repo_certificates: "{{ inventory_dir }}/group_vars/all/ansible-os-commvault/files/repo_certs.crt"
+
+...
+

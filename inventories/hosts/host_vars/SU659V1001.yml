@@ -1,0 +1,14 @@
+---
+
+ansible_host: 10.202.6.11
+mgmt_ip: 10.237.48.191/22
+generic_fe_gateway: 10.202.6.1
+
+node_type: hub-node
+dhcp_node_type: secondary
+dhcp_primary_server: 10.202.6.11
+dhcp_secondary_server: 10.202.6.10
+
+postgresql_replication_role: slave
+
+...

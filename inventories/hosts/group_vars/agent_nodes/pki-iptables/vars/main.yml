@@ -1,0 +1,59 @@
+---
+
+### GENERIC IPTABLES RULES
+iptables_generic_rules_inbound: []
+iptables_generic_rules_outbound: []
+
+# INBOUND RULES
+iptables_application_rules_inbound:
+  - description: "Allow tcp inbound ssh from worker, hub and agent nodes"
+    iptables_rule: "-A INPUT -s {{ worker_network }},{{ hub_nodes | list | join (',') }},{{ agent_nodes | list | join (',') }} -d {{ data0 }} -m state --state NEW -m tcp -p tcp --dport 22 -j ACCEPT"
+
+# OUTBOUND RULES
+iptables_application_rules_outbound:
+  - description: "Allow tcp outbound ssh to hub nodes and agent nodes"
+    iptables_rule: "-A OUTPUT -s {{ data0 }} -d {{ hub_nodes | list | join (',') }},{{ agent_nodes | list | join (',') }}  -m state --state NEW -m tcp -p tcp --dport 22 -j ACCEPT"
+
+  - description: "Allow udp outbound dns to dns servers"
+    iptables_rule: "-A OUTPUT -s {{ data0 }} -d {{ dns_servers | list | join (',') }} -m state --state NEW -m udp -p udp --dport 53 -j ACCEPT"
+
+  - description: "Allow tcp outbound dns to dns servers"
+    iptables_rule: "-A OUTPUT -s {{ data0 }} -d {{ dns_servers | list | join (',') }} -m state --state NEW -m tcp -p tcp --dport 53 -j ACCEPT"
+
+  - description: "Allow tcp outbound 80 to Satellite Capsule"
+    iptables_rule: "-A OUTPUT -s {{ mgmt0 }} -d {{ satellite_ip }} -m state --state NEW -m tcp -p tcp --dport 80 -j ACCEPT"
+
+  - description: "Allow tcp outbound ntp to ntp servers"
+    iptables_rule: "-A OUTPUT -s {{ data0 }} -d {{ ntp_servers | list | join (',') }} -m state --state NEW -m udp -p udp --dport 123 -j ACCEPT"
+
+  - description: "Allow tcp outbound 443 to Satellite Capsule"
+    iptables_rule: "-A OUTPUT -s {{ mgmt0 }} -d {{ satellite_ip }} -m state --state NEW -m tcp -p tcp --dport 443 -j ACCEPT"
+    
+  - description: "Allow tcp outbound 443"
+    iptables_rule: "-A OUTPUT -s {{ data0 }} -m state --state NEW -m tcp -p tcp --dport 443 -j ACCEPT"
+
+  - description: "Allow tcp outbound 443 to repo servers"
+    iptables_rule: "-A OUTPUT -s {{ mgmt0 }} -d {{ repo_servers_tooling }} -m state --state NEW -m tcp -p tcp --dport 443 -j ACCEPT"
+
+  - description: "Allow tcp outbound 443 to qualys and trendmicro"
+    iptables_rule: "-A OUTPUT -s {{ mgmt0 }} -d {{ qualys_trendmicro_tooling[0] }} -m state --state NEW -m tcp -p tcp --dport 443 -j ACCEPT"
+
+  - description: "Allow tcp outbound to proxy"
+    iptables_rule: "-A OUTPUT -s {{ data0 }} -d {{ generic_proxy_server_ip }} -m state --state NEW -m tcp -p tcp -m multiport --dports 1022,1023 -j ACCEPT"
+
+  - description: "Allow tcp outbound 4119,5274 and 5275 to qualys and trendmicro"
+    iptables_rule: "-A OUTPUT -s {{ mgmt0 }} -d {{ qualys_trendmicro_tooling[0] }} -m state --state NEW -m tcp -p tcp -m multiport --dports 4119,5274,5275 -j ACCEPT"
+
+  - description: "Allow tcp outbound to haproxy"
+    iptables_rule: "-A OUTPUT -s {{ data0 }} -d {{ dns_servers | list | join (',') }} -m state --state NEW -m tcp -p tcp --dport 3129 -j ACCEPT"
+  
+  - description: "Allow tcp outbound 8403 to Commvault"
+    iptables_rule: "-A OUTPUT -s {{ data0 }} -d {{ commvault_server_subnets | list | join (',') }} -m state --state NEW -m tcp -p tcp --dport 8403 -j ACCEPT"
+
+  - description: "Allow tcp outbound 8080 to qualys and trendmicro"
+    iptables_rule: "-A OUTPUT -s {{ mgmt0 }} -d {{ qualys_trendmicro_tooling[1] }} -m state --state NEW -m tcp -p tcp --dport 8080 -j ACCEPT"
+    
+  - description: "Allow tcp outbound 9091 to LFM"
+    iptables_rule: "-A OUTPUT -s {{ data0 }} -d {{ lfm_ips | join(',') }} -m state --state NEW -m tcp -p tcp --dport 9091 -j ACCEPT"
+
+...

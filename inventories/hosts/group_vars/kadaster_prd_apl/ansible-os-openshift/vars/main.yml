@@ -1,0 +1,24 @@
+---
+ 
+openshift_api_vips: "10.202.4.10"
+
+openshift_ingress_vips: "10.202.4.11"
+
+openshift_vcenters_datacenters: "DC3-NLAPE1"
+
+openshift_vcenter_folder: "Splunk/659-Kadaster/NDR-659/OpenShift/"
+
+openshift_compute_cluster: "/DC3-NLAPE1/host/DRP-V3-MIX-Y-02"
+
+openshift_vcenters_datastore: "/DC3-NLAPE1/datastore/659-DRP02-V3-Y-NDR-W-DSC-001/659-DRP02-V3-Y-NDR-W-LUN-001" 
+
+openshift_vcenters_networks: "659-F-L11-NLAPE1"
+
+openshift_vcenters_resourcepool: "/DC3-NLAPE1/host/DRP-V3-MIX-Y-02/Resources"
+
+openshift_ssh_key:
+  ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDILubMdUdabqaiCIIZ5IYSOVpEA90TDL+p790XejsOThdl9SZGWi1TB9mBFNLdDUUjSqRGsxfP3+okNe5H1tbCQi2EPrbG9jpSQwFNHAxnqsj7FZ47NepLn6Tw41pPBfs3K3eJPyJiSyfrsLJHj6rHbOGb/qrGaMVSRDMLLQ8UnMegJ9QYVV7RrKaIh2aSDOYjmVWAQhgc1di9Wk737vzGblkqtngO1qd9z4T9oBslM32KByJ6b1gtdrH6sJKaHPYwBQlPM1UmyUgPtvZ9TsA7seCDLVi9di9xocI9E8RUjw8NwrapZ4Oa3d+P/06ktCMYA8//5dmmi88PpbthW43z ansible@SU659V1000.kadaster.int.cncp.nl
+openshift_ssh_key2:
+  ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDVMiFVpIV9a1qr1MeIKuiMrC5R6j2lyvuJ+bHHovXxD+Ka9JiTLVr/oyvL0Q8QDjtLWxOrXIaBmIvDRDjI3rYQPWlBDdDiLXCxwzFJ88L4F41ShKDjs3mTE7spNdR/3uiVs9dHUw+cjihssbaPxacAXvPp9GJt/ed8BmbSMM9+rhAlaqEuKPRVgi1FpbpaylclhAJdsIjuwY7PMDR5BQHnaIhURU6+YzVnOI4oxUCkyG5LIdVrZmhBIbQJElIts8h58G9jgNCuuu+PvbTRdTF3JBpWLzYgenfAg2gDGOsnzr+WWdi+NhiBYHM8d2uPgL16qmO2WXVoY/TyZxfmqvYdZuSsG7psp9bZWV6EDfMBEIRUNtkqo8V1Uu5JlGWhI0Cp7mjla+s66z2AfpaeMjOq8nExc1jdQHpj9Cb8dYow69x/RszPeHlYgkuVvgMv8eStmBNO8duhonC4LXdnXqbnCR4CNLXmoNhmDkOonbNA/7M7EqwiZugvAbf9CKs6/p9NZepi9ZDMPCkAs6wdrQwXZajuYzwYvLyRp6paAR//V9MiiQ37VHS0nGOLg7BEWvE1dZ4vnmCmggouZy+7wribWNONWZAjSKHyENkmY364Zt8XUbaKSO/+7R1cEFQB1Ouktq+ZwDFkLH9UvRJsF/6hbjNILsCP/JcRVbbybmpy2w==
+
+...

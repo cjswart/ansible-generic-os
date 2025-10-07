@@ -1,0 +1,8 @@
+---
+
+allowed_client_ip_ranges:
+  - "{{ master_network }}"
+  - "{{ worker_network }}"
+  - 172.16.4.142 # WINDOWS POC GRADUS
+  - 172.16.4.143 # WINDOWS POC GRADUS
+...

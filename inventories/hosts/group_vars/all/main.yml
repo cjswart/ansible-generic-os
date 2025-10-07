@@ -1,0 +1,66 @@
+---
+
+data0: "{{ ansible_ens192.ipv4.address }}"
+mgmt0: "{{ ansible_ens224.ipv4.address }}"
+mgmt0_network: "{{ ansible_ens224.ipv4.network }}/{{ ansible_ens224.ipv4.netmask }}"
+data0_network: "{{ ansible_ens192.ipv4.network }}/{{ ansible_ens192.ipv4.netmask }}"
+data_interface: "ens192"
+mgmt_interface: "ens224"
+
+ntp_servers:
+ - "{{ hub_nodes[0] }}"
+ - "{{ hub_nodes[1] }}"
+
+dns_servers:
+ - "{{ hub_nodes[0] }}"
+ - "{{ hub_nodes[1] }}"
+
+worker_master_networks:
+  - "{{ master_network }}"
+  - "{{ worker_network }}"
+
+dns_hostname: "{{ ansible_hostname.split('.')[0] }}"
+
+satellite_organization: KPN
+satellite_activation_key: "RedHat Library"
+
+dns_servers_external:
+  - 145.222.120.244
+  - 145.222.120.245
+  - 145.222.120.228
+  - 145.222.120.229
+
+ntp_servers_external:
+  - 145.222.16.132
+  - 145.222.16.148
+
+steppingstone_ips:
+  - 145.222.58.126
+  - 145.222.59.130
+  - 145.222.58.111
+  - 145.222.59.123
+
+repo_servers_tooling: 145.222.97.85
+
+commvault_server_subnets:
+  - 195.121.72.32/27  # Amsterdam
+  - 195.121.96.128/27 # Rotterdam
+  - 195.121.96.160/27 # Arnhem
+
+openshift_domain_name: "int.cncp.nl"
+
+pki_ca: 145.222.153.89
+
+generic_proxy_server:  "proxy.{{ openshift_domain_name }}"
+
+generic_proxy_server_ip: 57.153.56.12
+
+lfm_ips:
+  - 10.12.43.136
+  - 34.243.68.35
+
+qualys_trendmicro_tooling:
+  - 139.156.150.1
+  - 139.156.150.2
+
+...

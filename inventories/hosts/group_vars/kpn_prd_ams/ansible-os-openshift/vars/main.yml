@@ -1,0 +1,27 @@
+---
+
+openshift_api_vips: "172.16.18.20"
+
+openshift_ingress_vips: "172.16.18.21"
+
+openshift_vcenters_datacenters: "DC4-NLAMS1"
+
+openshift_vcenter_username: srvc_cncp_vcenter@cura.kpn.org
+
+openshift_compute_cluster: "/DC4-NLAMS1/host/DRP-V4-MIX-Z-01"
+
+openshift_vcenters_datastore: "/DC4-NLAMS1/datastore/OCP-MIX01-V4-Z-NDR-W-DSC-001/OCP-MIX01-V4-Z-NDR-W-LUN-001"
+
+openshift_vcenters_networks: "260-F-L03-NLASD2"
+
+openshift_vcenters_resourcepool: "/DC4-NLAMS1/host/DRP-V4-MIX-Z-01/Resources"
+
+openshift_vcenter_folder: "Splunk/260-OpenShift/OpenShift/PRD/"
+
+openshift_ssh_key:
+  ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDAI0gIIC7ZsYydxQmM9JHAsa2bvq2BJr2SuX6wyZ7egYT4RGuyfVI2Srwt2sZpjkYG3GXHwUp9fd7QLyXlQWD1dlDXJFDtihVFLjSI7hKLa8XmQoTJAug/9dKQNBioO0B3URuOxuCLbHF+Foom7ObmqWgxYTA4AM6Eko2LCXVUjDfOs/2FHmDh1g4nxgedwEmrZIUqO0OOrXSagRSYMEro/v9mH11k3Jv+ku+XccRgif1zTFVKch4z696SfeogqVC02XEBDCmXlDeRJBcIhJMHQgzyUpfAr+Y/xzNOMWDRewzhKSj0aKj84n5ft1lJoV9VEw4AVyKHfX0azv2+07PFL6zw/RPGZxXMU9wtwr5BMC43id8dZl8GNNzH6MHVU26+coh3Rq6Wk1Kt22tSNLS0HFQRIPoTgJXsXFUAVqgE3TZ6ktiYXUYy9IhYle50LbP1ncql11k6nA4vkbq8y17cg1x6+I4yLZfX1OfEwxFR7B1PFTuEC9mypTYktspHbkc= ansible@SU260V0004.kpn.int.cncp.nl
+
+openshift_ssh_key2:
+  ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDlMMeGPZsl9nX7ieQ8XIk+bUO6zCSiImi9H7CSwaqnhA/lIkSko1AMFbLBTrY1tQdav6jydF/KaECtPhMiKze6cd7VzC5ecHDOqBv01d5O2iXJw3l7xiosuTjwYDiZOi4elxvi6TnPMIyeistjz65zqeWB1HOEVWinrp/dPZsxrGhl6a9OIUSxnoj6BTgJGolZjPphIDqTiyaQWLqR8V7crqdB1O9w9fbOAdWKbGEJvriPi6Pd0udsMI7yt/ZP+qrMubuzde1qA3iEx2kl8+S0aShkixrz/OyeioueUdw/OTTKQ7ct2jBI46O4LqJJJo1nhwsfa8LEX2zt4bUPV9RR7v/VouIpKDAZrA53n8WS3czdqFz7CYBOcsjEt3BpjiCr+4F6K4GG9+7tHfU+kbZ2Ks1hHqD6M3X/DG9lWLpTwmsSQZHd4Lg5FTx3dp9/DMCbuJvAS2YFxmJFl0isiCVGzRXj7gMCP7GCwEgnnKIMgrtmGLNLIgutHTR3yoMPYas= ansible@SU260V0005.kpn.int.cncp.nl
+
+...

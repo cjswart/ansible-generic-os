@@ -1,0 +1,19 @@
+---
+
+haproxy_ca_base: "/opt/ocp/haproxy/certs"
+haproxy_crt_base: "/opt/ocp/haproxy/certs"
+cert_extension_key: .crt.key
+
+haproxy_backend01: vcenter
+haproxy_backend01_redirect_fqdn: "{{ vcenter_hub_alias }}"
+haproxy_backend01_orginal_fqdn: "{{ openshift_vcenters_server }}"
+
+haproxy_backend02: haproxy
+haproxy_backend02_redirect_fqdn: "{{ haproxy_hub_alias }}"
+haproxy_backend02_orginal_fqdn: "{{ generic_proxy_server }}"
+
+haproxy_log_facility: local1
+
+haproxy_log_max_versions: 2
+
+...

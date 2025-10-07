@@ -1,0 +1,20 @@
+---
+
+generic_static_routes:
+  - "{{ satellite_ip }}/32 {{ generic_mgmt_gateway }}"
+  - "{{ repo_servers_tooling }}/32 {{ generic_mgmt_gateway }}"
+  - "{{ qualys_trendmicro_tooling[0] }}/32 {{ generic_mgmt_gateway }}"
+  - "{{ qualys_trendmicro_tooling[1] }}/32 {{ generic_mgmt_gateway }}"
+
+generic_fe_dns_servers: "{{ dns_servers }}"
+generic_additional_packages: []
+
+generic_logical_volumes:
+  - name: lvopt
+    size: 4G
+    vg: vg00
+  - name: lvvar
+    size: 19G
+    vg: vg00
+
+...

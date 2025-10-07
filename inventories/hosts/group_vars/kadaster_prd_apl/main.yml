@@ -1,0 +1,24 @@
+---
+
+hub_nodes:
+- 10.202.6.10
+- 10.202.6.11
+
+agent_nodes:
+  - 10.202.4.31
+
+openshift_cluster_name: ocp01
+
+master_network: 10.202.4.0/25
+worker_network: 10.202.4.128/25
+
+openshift_vcenters_server: swuhtv110.it.mgt
+
+vcenters_servers:
+  - 145.222.67.37
+  - 10.185.97.0/24
+
+satellite_ip: 145.222.97.246
+satellite_fqdn: suct2v1250.luna.kpn.org
+
+...

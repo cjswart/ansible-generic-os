@@ -1,0 +1,10 @@
+---
+
+node_type: cees-node
+ntp_servers:
+  - ntppool1.time.nl
+  - ntppool2.time.nl
+
+
+...
+

@@ -1,0 +1,150 @@
+---
+
+# A list of zones and properties per zone.
+dns_zones:
+  int.cncp.nl:
+    primary_ns: ns1.int.cncp.nl
+    domain: int.cncp.nl
+    admin_email: admin@kadaster.int.cncp.nl
+    serial: 2024070101
+    secondary_ns: ns2.int.cncp.nl
+    hosts:
+      ns1: "{{ hub_nodes[0] }}"
+      ns2: "{{ hub_nodes[1] }}"
+      proxy: "{{ generic_proxy_server_ip }}"
+
+  kadaster.int.cncp.nl:
+    primary_ns: ns1.kadaster.int.cncp.nl
+    domain: kadaster.int.cncp.nl
+    admin_email: admin@kadaster.int.cncp.nl
+    serial: 2024070101
+    secondary_ns: ns2.kadaster.int.cncp.nl
+    hosts:
+      ns1: "{{ hub_nodes[0] }}"
+      ns2: "{{ hub_nodes[1] }}"
+      agent01:
+        - "{{ agent_nodes[0] }}"
+      haproxy:
+        - "{{ hub_nodes[0] }}"
+        - "{{ hub_nodes[1] }}"
+      hub01:
+        - "{{ hub_nodes[0] }}"
+      hub02:
+        - "{{ hub_nodes[1] }}"
+      registry:
+        - "{{ agent_nodes[0] }}"
+      vcenter:
+        - "{{ hub_nodes[0] }}"
+        - "{{ hub_nodes[1] }}"
+
+  ocp01.kadaster.int.cncp.nl:
+    primary_ns: ns1.kadaster.int.cncp.nl
+    admin_email: admin@kadaster.int.cncp.nl
+    serial: 2024070101
+    secondary_ns: ns2.kadaster.int.cncp.nl
+    hosts:
+      api: "10.202.4.10"
+      '*.apps': "10.202.4.11"
+      ns1: "{{ hub_nodes[0] }}"
+      ns2: "{{ hub_nodes[1] }}"
+
+  ocp03.kadaster.int.cncp.nl:
+    primary_ns: ns1.kadaster.int.cncp.nl
+    admin_email: admin@kadaster.int.cncp.nl
+    serial: 2024070101
+    secondary_ns: ns2.kadaster.int.cncp.nl
+    hosts:
+      api: "10.202.4.12"
+      '*.apps': "10.202.4.13"
+      ns1: "{{ hub_nodes[0] }}"
+      ns2: "{{ hub_nodes[1] }}"
+
+  ocp05.kadaster.int.cncp.nl:
+    primary_ns: ns1.kadaster.int.cncp.nl
+    admin_email: admin@kadaster.int.cncp.nl
+    serial: 2024070101
+    secondary_ns: ns2.kadaster.int.cncp.nl
+    hosts:
+      api: "10.202.4.14"
+      '*.apps': "10.202.4.15"
+      ns1: "{{ hub_nodes[0] }}"
+      ns2: "{{ hub_nodes[1] }}"
+
+  ocp07.kadaster.int.cncp.nl:
+    primary_ns: ns1.kadaster.int.cncp.nl
+    admin_email: admin@kadaster.int.cncp.nl
+    serial: 2024070101
+    secondary_ns: ns2.kadaster.int.cncp.nl
+    hosts:
+      api: "10.202.4.16"
+      '*.apps': "10.202.4.17"
+      ns1: "{{ hub_nodes[0] }}"
+      ns2: "{{ hub_nodes[1] }}"
+
+  ocp09.kadaster.int.cncp.nl:
+    primary_ns: ns1.kadaster.int.cncp.nl
+    admin_email: admin@kadaster.int.cncp.nl
+    serial: 2024070101
+    secondary_ns: ns2.kadaster.int.cncp.nl
+    hosts:
+      api: "10.202.4.18"
+      '*.apps': "10.202.4.19"
+      ns1: "{{ hub_nodes[0] }}"
+      ns2: "{{ hub_nodes[1] }}"
+
+  ocp11.kadaster.int.cncp.nl:
+    primary_ns: ns1.kadaster.int.cncp.nl
+    admin_email: admin@kadaster.int.cncp.nl
+    serial: 2024070101
+    secondary_ns: ns2.kadaster.int.cncp.nl
+    hosts:
+      api: "10.202.4.20"
+      '*.apps': "10.202.4.21"
+      ns1: "{{ hub_nodes[0] }}"
+      ns2: "{{ hub_nodes[1] }}"
+
+  ocp13.kadaster.int.cncp.nl:
+    primary_ns: ns1.kadaster.int.cncp.nl
+    admin_email: admin@kadaster.int.cncp.nl
+    serial: 2024070101
+    secondary_ns: ns2.kadaster.int.cncp.nl
+    hosts:
+      api: "10.202.4.22"
+      '*.apps': "10.202.4.23"
+      ns1: "{{ hub_nodes[0] }}"
+      ns2: "{{ hub_nodes[1] }}"
+
+  ocp15.kadaster.int.cncp.nl:
+    primary_ns: ns1.kadaster.int.cncp.nl
+    admin_email: admin@kadaster.int.cncp.nl
+    serial: 2024070101
+    secondary_ns: ns2.kadaster.int.cncp.nl
+    hosts:
+      api: "10.202.4.24"
+      '*.apps': "10.202.4.25"
+      ns1: "{{ hub_nodes[0] }}"
+      ns2: "{{ hub_nodes[1] }}"
+
+  ocp17.kadaster.int.cncp.nl:
+    primary_ns: ns1.kadaster.int.cncp.nl
+    admin_email: admin@kadaster.int.cncp.nl
+    serial: 2024070101
+    secondary_ns: ns2.kadaster.int.cncp.nl
+    hosts:
+      api: "10.202.4.26"
+      '*.apps': "10.202.4.27"
+      ns1: "{{ hub_nodes[0] }}"
+      ns2: "{{ hub_nodes[1] }}"
+
+  ocp19.kadaster.int.cncp.nl:
+    primary_ns: ns1.kadaster.int.cncp.nl
+    admin_email: admin@kadaster.int.cncp.nl
+    serial: 2024070101
+    secondary_ns: ns2.kadaster.int.cncp.nl
+    hosts:
+      api: "10.202.4.28"
+      '*.apps': "10.202.4.29"
+      ns1: "{{ hub_nodes[0] }}"
+      ns2: "{{ hub_nodes[1] }}"
+
+...

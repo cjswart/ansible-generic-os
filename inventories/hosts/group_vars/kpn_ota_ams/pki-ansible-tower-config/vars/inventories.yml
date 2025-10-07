@@ -1,0 +1,17 @@
+---
+tower_inventories:
+  - name: "Demo Inventory"
+    state: absent
+  - name: "cncp SCM Inventory"
+    description: "Inventory for CloudNative"
+    source: scm
+    sources:
+      - name: "cncp SCM Inventory"
+        inventory: "CloudNative Inventory"
+        source_project: "cncp"
+        source: scm
+        source_path: "hosts/all.yml"
+        overwrite: true
+        overwrite_vars: true
+        update_on_project_update: true
+...

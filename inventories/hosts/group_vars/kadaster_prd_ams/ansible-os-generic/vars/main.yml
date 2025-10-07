@@ -1,0 +1,6 @@
+---
+
+generic_mgmt_gateway: 10.237.32.1
+generic_fe_gateway: 10.237.32.1
+
+...

@@ -1,0 +1,11 @@
+---
+
+ansible_host: 172.16.4.140
+mgmt_ip: 10.183.112.56/22
+generic_fe_gateway: 172.16.4.129
+
+dhcp_node_type: primary
+dhcp_primary_server: 172.16.4.140
+dhcp_secondary_server: 172.16.4.141
+
+...

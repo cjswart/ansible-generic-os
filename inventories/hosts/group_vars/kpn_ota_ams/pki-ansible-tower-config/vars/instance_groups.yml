@@ -1,0 +1,6 @@
+---
+tower_instance_groups:
+  - name: rextest
+    instances:
+      - 172.16.2.83
+...

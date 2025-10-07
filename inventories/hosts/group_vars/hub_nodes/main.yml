@@ -1,0 +1,24 @@
+---
+
+vcenter_hub_alias: "vcenter.{{ customer }}.{{ openshift_domain_name }}"
+haproxy_hub_alias: "haproxy.{{ customer }}.{{ openshift_domain_name }}"
+
+openshift_cluster_cidr: "10.128.0.0/14"
+openshift_cluster_hostprefix: "23"
+openshift_machine_cidr: "10.0.0.0/16"
+openshift_machine_hostprefix: "23"
+openshift_service_network: "172.30.0.0/16"
+
+dns_rsyslog_no_generic_logging: ";{{ dns_log_facility }}.none;{{ dhcp_log_facility }}.none;{{ haproxy_log_facility }}.none"
+dhcp_rsyslog_no_generic_logging: ";{{ dns_log_facility }}.none;{{ dhcp_log_facility }}.none;{{ haproxy_log_facility }}.none"
+haproxy_rsyslog_no_generic_logging: ";{{ dns_log_facility }}.none;{{ dhcp_log_facility }}.none;{{ haproxy_log_facility }}.none"
+
+ntp_servers:
+  - "{{ ntp_servers_external[0] }}"
+  - "{{ ntp_servers_external[1] }}"
+
+node_type: hub-node
+
+
+
+...

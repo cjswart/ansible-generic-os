@@ -1,0 +1,37 @@
+---
+
+### GENERIC IPTABLES RULES
+iptables_generic_rules_inbound: []
+iptables_generic_rules_outbound: []
+
+# INBOUND RULES
+iptables_application_rules_inbound:
+  - description: "Allow tcp inbound ssh from ocp platforms" 
+    iptables_rule: "-A INPUT -s {{ ocp_public_ip_addresses | list | join (',') }} -m state --state NEW -m tcp -p tcp --dport 22 -j ACCEPT"
+
+  - description: "Allow tcp inbound 3129 from ocp platforms"
+    iptables_rule: "-A INPUT -s {{ ocp_public_ip_addresses | list | join (',') }},{{ ocp_azure_healthcheck_ip_addresses | list | join (',') }} -m state --state NEW -m tcp -p tcp --dport 3129 -j ACCEPT"
+
+# OUTBOUND RULES
+iptables_application_rules_outbound:
+  - description: "Allow tcp outbound dns"
+    iptables_rule: "-A OUTPUT -m state --state NEW -m tcp -p tcp --dport 53 -j ACCEPT"
+  
+  - description: "Allow udp outbound dns"
+    iptables_rule: "-A OUTPUT -m state --state NEW -m udp -p udp --dport 53 -j ACCEPT"
+  
+  - description: "Allow tcp outbound http"
+    iptables_rule: "-A OUTPUT -m state --state NEW -m tcp -p tcp --dport 80 -j ACCEPT"
+  
+  - description: "Allow udp outbound ntp"
+    iptables_rule: "-A OUTPUT -m state --state NEW -m udp -p udp --dport 123 -j ACCEPT"
+  
+  - description: "Allow tcp outbound https"
+    iptables_rule: "-A OUTPUT -m state --state NEW -m tcp -p tcp --dport 443 -j ACCEPT"
+  
+  - description: "Allow tcp outbound https for roccaf"
+    iptables_rule: "-A OUTPUT -m state --state NEW -m tcp -p tcp --dport 8443 -j ACCEPT"
+
+  - description: "Allow tcp outbound https for LFM"
+    iptables_rule: "-A OUTPUT -m state --state NEW -m tcp -p tcp --dport 9091 -j ACCEPT"
+...

@@ -1,0 +1,10 @@
+---
+
+ansible_host: 10.200.4.31
+mgmt_ip: 10.237.32.192/22
+generic_fe_gateway: 10.200.4.1
+
+node_type: worker-node
+
+...
+

@@ -1,0 +1,9 @@
+---
+
+openshift_vcenters_server: swuhtv110.it.mgt
+
+vcenters_servers:
+  - 145.222.57.26
+  - 10.183.101.0/25
+
+...

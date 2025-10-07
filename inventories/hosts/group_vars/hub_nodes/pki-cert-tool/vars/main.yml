@@ -1,0 +1,161 @@
+---
+
+cert_tool_trigger_service: haproxy
+
+certs_info:
+  - cert_type: ejbca_managed
+    options:
+      cert_force_renewal: "{{ cert_tool_force_renewal | d(false) }}"
+      cert_auto_renewal: true
+      cert_renewal_period: "+6w"
+      cert_update_symlinks: false
+      trigger_restart: true
+      used_by_service:
+        - "{{ cert_tool_trigger_service }}"
+    ejbca:
+       proxy: "https://{{ generic_proxy_server }}:3129"
+       url: "https://roccaf1p.managedpki.com:8443/ejbca"
+       client_cert: "{{ inventory_dir }}/group_vars/all/pki-cert-tool/files/rockclient.crt"
+#       client_cert_password: "{{ ejbca_managed_pass }}"
+       client_key: "{{ inventory_dir }}/group_vars/all/pki-cert-tool/files/rockclient.key"
+       ca: "KPN N.V. Private CA G3"
+       validate_certs: false
+       cert_profile: "KPN_N.V._Private_CA_G3_TLS_CP"
+       end_entity_profile_name: "KPN_N.V._Private_CA_G3_TLS_EE"
+       entity_password: !vault |
+          $ANSIBLE_VAULT;1.1;AES256
+          31666437343633653963623464303966333464656463363766373534393932613938326435343939
+          6463376265323137616133636130356534393836383165320a363939616665646361326537616338
+          39333666343461363264313066363862373362643537373937306538633063383337613134333834
+          6631666437663239660a393537643031626339343336613664623866653132393037663564373037
+          62396539633934656438393564326466633430396131333439326139653732656261
+#       delegate_to: "{{ eidans_mgmt0 }}"
+    attributes:
+         cn: "{{ vcenter_hub_alias }}"
+         type: RSA
+         size: 4096
+         cipher: auto
+         entrust_not_after: "+365d"
+         key_usage_critical: true
+         key_usage:
+           - digitalSignature
+           - keyEncipherment
+           - dataEncipherment
+         extended_key_usage_critical: true
+         extended_key_usage:
+           - clientAuth
+           - serverAuth
+         subject_alt_name:
+           - "{{ vcenter_hub_alias }}"
+    paths:
+      new_cert: "{{ cert_base_path }}/{{ vcenter_hub_alias }}/{{ ansible_date_time.iso8601_basic_short| replace('-','') }}/{{ vcenter_hub_alias }}"
+      active_cert: "{{ cert_base_path }}/{{ vcenter_hub_alias }}/{{ vcenter_hub_alias }}"
+      external_signed: "{{ cert_base_path }}/ext_ca/issued/{{ ansible_date_time.iso8601_basic_short| replace('-','') }}"
+
+  - cert_type: ejbca_managed
+    options:
+      cert_force_renewal: "{{ cert_tool_force_renewal | d(false) }}"
+      cert_auto_renewal: true
+      cert_renewal_period: "+6w"
+      cert_update_symlinks: false
+      trigger_restart: true
+      used_by_service:
+        - "{{ cert_tool_trigger_service }}"
+    ejbca:
+       proxy: "https://{{ generic_proxy_server }}:3129"
+       url: "https://roccaf1p.managedpki.com:8443/ejbca"
+       client_cert: "{{ inventory_dir }}/group_vars/all/pki-cert-tool/files/rockclient.crt"
+#       client_cert_password: "{{ ejbca_managed_pass }}"
+       client_key: "{{ inventory_dir }}/group_vars/all/pki-cert-tool/files/rockclient.key"
+       ca: "KPN N.V. Private CA G3"
+       validate_certs: false
+       cert_profile: "KPN_N.V._Private_CA_G3_TLS_CP"
+       end_entity_profile_name: "KPN_N.V._Private_CA_G3_TLS_EE"
+       subject_alt_name: "{{ haproxy_hub_alias }}"
+       entity_password: !vault |
+          $ANSIBLE_VAULT;1.1;AES256
+          31666437343633653963623464303966333464656463363766373534393932613938326435343939
+          6463376265323137616133636130356534393836383165320a363939616665646361326537616338
+          39333666343461363264313066363862373362643537373937306538633063383337613134333834
+          6631666437663239660a393537643031626339343336613664623866653132393037663564373037
+          62396539633934656438393564326466633430396131333439326139653732656261
+#       delegate_to: "{{ eidans_mgmt0 }}"
+    attributes:
+         cn: "{{ haproxy_hub_alias }}"
+         type: RSA
+         size: 4096
+         cipher: auto
+         entrust_not_after: "+365d"
+         key_usage_critical: true
+         key_usage:
+           - digitalSignature
+           - keyEncipherment
+           - dataEncipherment
+         extended_key_usage_critical: true
+         extended_key_usage:
+           - clientAuth
+           - serverAuth
+         subject_alt_name:
+           - "{{ haproxy_hub_alias }}"
+    paths:
+      new_cert: "{{ cert_base_path }}/{{ haproxy_hub_alias }}/{{ ansible_date_time.iso8601_basic_short| replace('-','') }}/{{ haproxy_hub_alias }}"
+      active_cert: "{{ cert_base_path }}/{{ haproxy_hub_alias }}/{{ haproxy_hub_alias }}"
+      external_signed: "{{ cert_base_path }}/ext_ca/issued/{{ ansible_date_time.iso8601_basic_short| replace('-','') }}"
+
+##### ROCK API POC
+#
+# rock_api_test_cert: rocktestcert.int.cncp.nl
+#
+# certs_info:
+#   - cert_type: rock_managed
+#     options:
+#       cert_force_renewal: "{{ cert_tool_force_renewal | d(false) }}"
+#       cert_auto_renewal: true
+#       cert_renewal_period: "+6w"
+#       cert_update_symlinks: false
+#       trigger_restart: true
+#       used_by_service:
+#         - "{{ cert_tool_trigger_service }}"
+#     rock:
+#        proxy: "https://{{ generic_proxy_server }}:3129"
+#        url: "https://rock.kpn.org"
+#        validate_certs: false
+#        ca: "kpn-ca"
+#        username: sys_cncp
+#        password: !vault |
+#           $ANSIBLE_VAULT;1.1;AES256
+#           32353065353766396635393537343035356338666434643736333531623837643663373739376439
+#           6366323738633430356165343436383764366431626432360a613636626264653732616434666236
+#           38613463383931343065623065326638376266316565373032363862613061633931393162646438
+#           3966386465636665660a636536363431386335363634636637363462303635383932383166336230
+#           62376366336436343461336639336539383538303235626164623866613433393033303434663134
+#           6262633634653136363836313365646636373032393239303338
+# #       delegate_to: "{{ eidans_mgmt0 }}"
+#     attributes:
+#          cn: "{{ rock_api_test_cert }}"
+#          type: RSA
+#          size: 4096
+#          cipher: auto
+#          entrust_not_after: "+365d"
+#          key_usage_critical: true
+#          key_usage:
+#            - digitalSignature
+#            - keyEncipherment
+#            - nonRepudiation
+#          extended_key_usage_critical: true
+#          extended_key_usage:
+#            - clientAuth
+#            - serverAuth
+#          subject_alt_name:
+#            - "{{ rock_api_test_cert }}"
+#     paths:
+#       new_cert: "{{ cert_base_path }}/{{ rock_api_test_cert }}/{{ ansible_date_time.iso8601_basic_short| replace('-','') }}/{{ rock_api_test_cert }}"
+#       active_cert: "{{ cert_base_path }}/{{ rock_api_test_cert }}/{{ rock_api_test_cert }}"
+#       external_signed: "{{ cert_base_path }}/ext_ca/issued/{{ ansible_date_time.iso8601_basic_short| replace('-','') }}"
+
+cert_ca_certificates_file:
+  - src: "/etc/ssl/tls/{{ vcenter_hub_alias }}/{{ vcenter_hub_alias }}.ca_chain.crt"
+    dest: "{{ cert_systemwide_ca_truststore }}/"
+    mode: "0644"
+
+...

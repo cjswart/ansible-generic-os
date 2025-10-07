@@ -1,0 +1,28 @@
+---
+
+# Subnet local network
+dhcp_subnets_01:
+  - interface: ens192
+    router: 10.202.6.1
+    network: 10.202.6.0
+    netmask: 255.255.255.128
+    broadcast: 10.202.4.127
+    range:
+      start: 10.202.6.126
+      end: 10.202.6.126
+
+# Subnet for OpenShift nodes
+dhcp_subnets_02:
+  - interface: ens192
+    router: 10.202.4.1
+    network: 10.202.4.0
+    netmask: 255.255.255.0
+    broadcast: 10.202.4.255
+    range_masters:
+      start: 10.202.4.32
+      end: 10.202.4.126
+    range_workers:
+      start: 10.202.4.129
+      end: 10.202.4.254
+
+...

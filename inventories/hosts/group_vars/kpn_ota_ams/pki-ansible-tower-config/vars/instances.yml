@@ -1,0 +1,7 @@
+---
+tower_instances:
+  - name: 172.16.2.83
+    node_type: execution
+    peers:
+      - "ingress-mesh-hop-aap.apps.{{ openshift_cluster_name }}.kpn.int.cncp.nl"
+...

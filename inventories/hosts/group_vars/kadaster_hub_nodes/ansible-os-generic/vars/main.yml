@@ -1,0 +1,17 @@
+---
+
+generic_static_routes:
+  - "{{ ntp_servers_external[0] }}/32 {{ generic_mgmt_gateway }}"
+  - "{{ ntp_servers_external[1] }}/32 {{ generic_mgmt_gateway }}"
+  - "{{ steppingstone_ips[0] }}/32 {{ generic_mgmt_gateway }}"
+  - "{{ steppingstone_ips[1] }}/32 {{ generic_mgmt_gateway }}"
+  - "{{ steppingstone_ips[2] }}/32 {{ generic_mgmt_gateway }}"
+  - "{{ steppingstone_ips[3] }}/32 {{ generic_mgmt_gateway }}"
+  - "{{ satellite_ip }}/32 {{ generic_mgmt_gateway }}"
+  - "{{ vcenters_servers[0] }}/32 {{ generic_mgmt_gateway }}"
+  - "{{ vcenters_servers[1] }} {{ generic_mgmt_gateway }}"
+  - "{{ repo_servers_tooling }}/32 {{ generic_mgmt_gateway }}"
+  - "{{ qualys_trendmicro_tooling[0] }}/32 {{ generic_mgmt_gateway }}"
+  - "{{ qualys_trendmicro_tooling[1] }}/32 {{ generic_mgmt_gateway }}"
+
+...

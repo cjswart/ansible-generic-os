@@ -1,0 +1,15 @@
+---
+
+squid_tls_certificate: /etc/ssl/tls/{{ generic_proxy_server }}/{{ generic_proxy_server }}.crt
+squid_tls_key: /etc/ssl/tls/{{ generic_proxy_server }}/{{ generic_proxy_server }}.key
+squid_tls_ca_chain: /etc/ssl/tls/{{ generic_proxy_server }}/{{ generic_proxy_server }}.ca_chain.crt
+squid_acl_domains: "gencrocp.azurecr.io .openshift.com .cloudfront.net .redhat.com .k3s.io github.com registry-1.docker.io rpm.rancher.io objects.githubusercontent.com ghcr.io .k8s.io pkg-containers.githubusercontent.com europe-west4-docker.pkg.dev vstsagentpackage.azureedge.net d39mqg4b1dx9z1.cloudfront.net cdn01.quay.io cdn02.quay.io checkpoint-api.hashicorp.com .vault.azure.net .dev.azure.com roccaf1p.managedpki.com yum.vector.dev setup.vector.dev s3.amazonaws.com auth.docker.io production.cloudflare.docker.comv .microsoftonline.com .microsoft.com management.azure.com aka.ms azcliextensionsync.blob.core.windows.net azcliprod.blob.core.windows.net azurecliprod.blob.core.windows.net .python.org azurecliprod.blob.core.windows.net pypi.org files.pythonhosted.org raw.githubusercontent.com .helm.sh .github.io westeurope.dp.kubernetesconfiguration.azure.com keys.datadoghq.com galaxy.ansible.com b2b-connect.kpn.com b2bacc-connect.kpn.com raw.githubusercontent.com"
+
+squid_acl_sources: "{{ ocp_public_ip_addresses }}"
+
+squid_acl_ports:
+  - "http_port port 80"
+  - "https_port port 443" 
+  - "https2_port port 8443"  ## Needed for ROCKCA
+
+...

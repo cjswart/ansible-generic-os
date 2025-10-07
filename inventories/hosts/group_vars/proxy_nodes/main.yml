@@ -1,0 +1,12 @@
+---
+
+ocp_public_ip_addresses:
+  - 145.222.104.88
+  - 145.222.218.65
+  - 145.222.218.33
+  - 145.222.104.72
+
+ocp_azure_healthcheck_ip_addresses:
+  -  168.63.129.16
+
+...
