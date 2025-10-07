@@ -1,0 +1,9 @@
+---
+- name: Apply baseline and app configurations
+  hosts: all
+  become: true
+
+  roles:
+    - common
+    - nginx
+    - postgresql
