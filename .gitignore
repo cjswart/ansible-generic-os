@@ -1,0 +1,19 @@
+# Ansible
+*.retry
+vault_pass.txt
+*.pyc
+__pycache__/
+.molecule/
+.cache/
+
+# Molecule
+roles/*/molecule/*/instance_config.yml
+roles/*/.molecule
+
+# Python
+venv/
+.env/
+
+# OS
+.DS_Store
+Thumbs.db

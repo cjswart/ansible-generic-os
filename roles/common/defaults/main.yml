@@ -1,0 +1,13 @@
+---
+common_packages:
+  - curl
+  - vim
+  - git
+  - net-tools
+
+admin_users:
+  - name: devops
+    uid: 1001
+    shell: /bin/bash
+    authorized_keys:
+      - "{{ lookup('file', 'files/devops_id_rsa.pub') }}"

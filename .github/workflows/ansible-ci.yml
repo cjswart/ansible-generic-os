@@ -1,0 +1,82 @@
+---
+name: Ansible Automation Pipeline
+on:
+  push:
+    branches: [ "main", "production", "acceptance" ]
+  pull_request:
+    branches: [ "main", "production", "acceptance" ]
+jobs:
+  lint:
+    name: 🔍 Lint and Validate
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          pip install ansible ansible-lint yamllint molecule docker
+
+      - name: Run linters
+        run: |
+          ansible-lint playbooks/
+          yamllint .
+
+  test:
+    name: 🧪 Molecule Test Roles
+    runs-on: ubuntu-latest
+    needs: lint
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install test dependencies
+        run: |
+          pip install ansible molecule docker
+
+      - name: Run Molecule tests
+        run: |
+          cd roles/common
+          molecule test
+
+  deploy:
+    name: 🚀 Deploy to Target Environment
+    runs-on: ubuntu-latest
+    needs: [ lint, test ]
+    if: github.ref == 'refs/heads/main'
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install Ansible
+        run: pip install ansible
+
+      - name: Decrypt Ansible Vault
+        env:
+          VAULT_PASSWORD: ${{ secrets.ANSIBLE_VAULT_PASS }}
+        run: echo "$VAULT_PASSWORD" > vault_pass.txt
+
+      - name: Run Playbook
+        env:
+          ANSIBLE_HOST_KEY_CHECKING: False
+        run: |
+          ansible-playbook playbooks/site.yaml \
+            -i inventories/prod/hosts.yaml \
+            --vault-password-file vault_pass.txt \
+            --diff
